@@ -45,6 +45,8 @@ class Location(db.Model):
     __tablename__ = "location"
     id = db.Column(db.Integer, primary_key=True,autoincrement=True)
     name = db.Column(db.String, nullable=False)
+    address = db.Column(db.String, nullable=False)
+    occupied = db.Column(db.Boolean, nullable=False)
     dark = db.Column(db.Boolean, nullable=False)
     quiet = db.Column(db.Boolean, nullable=False)
     region = db.Column(db.String, nullable=False)
@@ -54,6 +56,8 @@ class Location(db.Model):
         Assigning values to different fields of a location record
         """
         self.name = kwargs.get("name","")
+        self.address = kwargs.get("address","")
+        self.occupied = kwargs.get("occupied", False)
         self.dark = kwargs.get("dark", False)
         self.quiet = kwargs.get("quiet", False)
         self.region = kwargs.get("region","")
@@ -66,6 +70,8 @@ class Location(db.Model):
         return{
             "id" : self.id,
             "name" : self.name,
+            "address" : self.address,
+            "occupied" : self.occupied,
             "dark":self.dark,
             "quiet":self.quiet, 
             "region" : self.region

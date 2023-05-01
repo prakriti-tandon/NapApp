@@ -13,8 +13,7 @@ class DetailViewController: UIViewController {
     let nameTextField = UITextField()
     let snatchButton = UIButton()
     
-    
-    
+    weak var del: updateCell?
     let location: Location
     
     init(location: Location) {
@@ -59,6 +58,7 @@ class DetailViewController: UIViewController {
     
     @objc func snatch() {
         print("hi")
+        del?.updateAvailability(availability: false)
         
         
     }
@@ -85,8 +85,8 @@ class DetailViewController: UIViewController {
             ])
             
         }
-        
-       
-        
-    
+}
+
+protocol updateCell: UICollectionViewCell {
+    func updateAvailability(availability: Bool)
 }

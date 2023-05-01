@@ -11,6 +11,7 @@ class ViewController: UIViewController {
 
     var collectionView: UICollectionView!
     var filterCollectionView: UICollectionView!
+    var currentIndex = IndexPath()
     
     //filters array
     private var filters = ["Central", "West", "North"]
@@ -19,7 +20,7 @@ class ViewController: UIViewController {
     //sections array
     private var sections = ["Central", "West", "North"]
     private var locations: [[Location]] = [
-        [Location(imageName: "image1", description: "couch in basement of Barton", campus:"Central", brightness: "dim", noise: "low")]
+        [Location(imageName: "image1", description: "couch in basement of Barton", campus:"Central", brightness: "dim", noise: "low")], [Location(imageName: "image1", description: "Couches in 1st floor Gates", campus: "Central", brightness: "Dim", noise: "Medium")]
     ]
     //paddings
     let itemPadding: CGFloat = 10

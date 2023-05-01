@@ -50,6 +50,7 @@ class Location(db.Model):
     dark = db.Column(db.Boolean, nullable=False)
     quiet = db.Column(db.Boolean, nullable=False)
     region = db.Column(db.String, nullable=False)
+    occupier = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
 
     def __init__(self, **kwargs):
         """
@@ -61,11 +62,27 @@ class Location(db.Model):
         self.dark = kwargs.get("dark", False)
         self.quiet = kwargs.get("quiet", False)
         self.region = kwargs.get("region","")
+        self.occupier = kwargs.get("occupier")
 
 
     def serialize(self):
         """
         Returns a dictionary of all fields of a location
+        """
+        return{
+            "id" : self.id,
+            "name" : self.name,
+            "address" : self.address,
+            "occupied" : self.occupied,
+            "dark":self.dark,
+            "quiet":self.quiet, 
+            "region" : self.region,
+            "occupier": User.query.filter_by(id=self.user).first().serialize()
+        }
+
+    def simple_serialize(self):
+        """
+        Returns a dictionary of all fields of a location - except occupier
         """
         return{
             "id" : self.id,

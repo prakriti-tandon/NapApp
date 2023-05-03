@@ -10,14 +10,18 @@ import UIKit
 class DetailViewController: UIViewController {
     
     let picImageView = UIImageView()
-    let nameTextField = UITextField()
+    let nameTextField = UILabel()
     let snatchButton = UIButton()
     
     weak var del: updateCell?
-    let location: Location
+    var location: Location
+    var section: Int
+    var index: Int
     
-    init(location: Location) {
+    init(location: Location, section: Int, index: Int) {
         self.location = location
+        self.section = section
+        self.index = index
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -44,11 +48,21 @@ class DetailViewController: UIViewController {
         nameTextField.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(nameTextField)
         
-    
-        snatchButton.setTitle("snatch location", for: .normal)
-        snatchButton.backgroundColor = .green
-        snatchButton.tintColor = .green
-        snatchButton.addTarget(self, action: #selector(snatch), for: .touchUpInside)
+        if location.availability {
+            snatchButton.setTitle("Snatch location", for: .normal)
+            snatchButton.setTitleColor(.black, for: .normal)
+            snatchButton.backgroundColor = .green
+            snatchButton.tintColor = .green
+            snatchButton.addTarget(self, action: #selector(snatch), for: .touchUpInside)
+        }
+        else {
+            snatchButton.setTitle("Cancel Snatch", for: .normal)
+            snatchButton.setTitleColor(.white, for: .normal)
+            snatchButton.backgroundColor = .red
+            snatchButton.addTarget(self, action: #selector(cancel), for: .touchUpInside)
+        }
+        
+        
         snatchButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(snatchButton)
         
@@ -57,10 +71,19 @@ class DetailViewController: UIViewController {
     }
     
     @objc func snatch() {
-        print("hi")
-        del?.updateAvailability(availability: false)
-        
-        
+        snatchButton.setTitle("Cancel Snatch", for: .normal)
+        snatchButton.setTitleColor(.white, for: .normal)
+        snatchButton.backgroundColor = .red
+        snatchButton.addTarget(self, action: #selector(cancel), for: .touchUpInside)
+        del?.updateAvailability(index : self.index, section: self.section, availability: false)
+    }
+    
+    @objc func cancel() {
+        snatchButton.setTitle("Snatch Location", for: .normal)
+        snatchButton.setTitleColor(.black, for: .normal)
+        snatchButton.backgroundColor = .green
+        snatchButton.addTarget(self, action: #selector(snatch), for: .touchUpInside)
+        del?.updateAvailability(index : self.index, section: self.section, availability: true)
     }
     
         
@@ -68,7 +91,7 @@ class DetailViewController: UIViewController {
             NSLayoutConstraint.activate([
                 picImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
                 picImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-                picImageView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5),
+                picImageView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1),
                 picImageView.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5)
             ])
             
@@ -87,6 +110,6 @@ class DetailViewController: UIViewController {
         }
 }
 
-protocol updateCell: UICollectionViewCell {
-    func updateAvailability(availability: Bool)
+protocol updateCell: ViewController {
+    func updateAvailability(index: Int, section: Int, availability: Bool)
 }

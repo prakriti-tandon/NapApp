@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     //sections array
     private var sections = ["Central", "West", "North"]
     private var locations: [[Location]] = [
-        [Location(imageName: "image1", description: "couch in basement of Barton", campus:"Central", brightness: "dim", noise: "low")], [Location(imageName: "image1", description: "Couches in 1st floor Gates", campus: "Central", brightness: "Dim", noise: "Medium")]
+        [Location(imageName: "image1", description: "Couch in basement of Barton", campus:"Central", brightness: "dim", noise: "low"), Location(imageName: "image1", description: "Couches in 1st floor Gates", campus: "Central", brightness: "Dim", noise: "Medium"), Location(imageName: "image1", description: "Couch on Third Floor Duffield", campus: "Central", brightness: "Very Bright", noise: "low")]
     ]
     //paddings
     let itemPadding: CGFloat = 10
@@ -40,6 +40,7 @@ class ViewController: UIViewController {
    
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         title = "Nap Spots on Campus"
         view.backgroundColor = .white
@@ -107,7 +108,7 @@ extension ViewController: UICollectionViewDataSource {
                 cell.update(location: location)
                 return cell
             }
-            }
+        }
 //            else {
 //                if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: filterCellReuseID, for: indexPath) as? CustomFilterCollectionViewCell {
 //                    let filter = filters[indexPath.row]
@@ -119,7 +120,7 @@ extension ViewController: UICollectionViewDataSource {
         return UICollectionViewCell()
         
     }
-    
+        
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         if (collectionView.tag == collectionViewTag) {
             return locations.count
@@ -158,7 +159,8 @@ extension ViewController: UICollectionViewDelegate {
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseID, for: indexPath) as? CustomCollectionViewCell{
                 //how do I get Resturant instead of [Resturant]?
                 let currentLoc = locations[indexPath.section][indexPath.item]
-                let vc = DetailViewController(location: currentLoc)
+                let vc = DetailViewController(location: currentLoc, section: indexPath.section, index: indexPath.item)
+                vc.del = self
                 navigationController?.pushViewController(vc, animated: true)
             }
         }
@@ -173,7 +175,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if (collectionView.tag == collectionViewTag) {
             let len = (view.frame.width - 2 * itemPadding - sectionPadding - 30) / 2
-            return CGSize(width: len, height: len)
+            return CGSize(width: len*2, height: len)
         }
         else {
             let width = (view.frame.width / 5 )
@@ -191,3 +193,11 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
     
 }
 
+extension ViewController: updateCell{
+    func updateAvailability(index: Int, section: Int, availability: Bool) {
+        locations[section][index].availability = availability
+        collectionView.reloadData()
+    }
+    
+    
+}

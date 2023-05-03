@@ -22,13 +22,13 @@ class CustomCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
-        labelView.textColor = .black
+        labelView.textColor = .purple
         labelView.clipsToBounds = true
         contentView.addSubview(labelView)
         labelView.translatesAutoresizingMaskIntoConstraints = false
         
         availabilityLabel.text = "Available"
-        availabilityLabel.backgroundColor = .green
+        availabilityLabel.backgroundColor = .red
         availabilityLabel.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(availabilityLabel)
 
@@ -38,9 +38,9 @@ class CustomCollectionViewCell: UICollectionViewCell {
     func setupConstraints() {
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: self.contentView.topAnchor),
-            imageView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 25),
-            imageView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: 175),
-            imageView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor)
+            imageView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
+            imageView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
+            imageView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -10)
         ])
         
         NSLayoutConstraint.activate([
@@ -64,20 +64,15 @@ class CustomCollectionViewCell: UICollectionViewCell {
     func update(location: Location) {
         imageView.image = UIImage(named: location.imageName)
         labelView.text = location.description
-    }
-}
-
-extension CustomCollectionViewCell: updateCell {
-    func updateAvailability(availability: Bool) {
-        if (!availability) {
-            availabilityLabel.text = "Occupied"
+        if (!location.availability) {
+            availabilityLabel.text = "Reserved"
+            availabilityLabel.textColor = .white
             availabilityLabel.backgroundColor = .red
         }
         else {
             availabilityLabel.text = "Available"
+            availabilityLabel.textColor = .black
             availabilityLabel.backgroundColor = .green
         }
     }
-    
-    
 }

@@ -60,7 +60,7 @@ def get_user(user_id):
 #     bank_balance = 500, 
 #     dark = bool(body.get("dark",True)),
 #     quiet = bool(body.get("quiet", True)),
-#     region = body.get("region")
+#     bregion = body.get("region")
 #   )
 #   db.session.add(user)
 #   db.session.commit()

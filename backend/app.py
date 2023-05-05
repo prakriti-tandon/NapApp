@@ -49,6 +49,25 @@ def get_user(user_id):
     return failure_response("User not found")
   return success_response(user.serialize())
 
+# @app.route("/api/users/",methods=["POST"])
+# def create_user():
+#   """
+#   Endpoint to create a user
+#   """
+#   body = json.loads(request.data)
+#   if body.get("name") is None or body.get("region") is None: 
+#     return failure_response("incorrect input", 400)
+#   user = User(
+#     name = body.get("name"),
+#     bank_balance = 500, 
+#     dark = bool(body.get("dark",True)),
+#     quiet = bool(body.get("quiet", True)),
+#     bregion = body.get("region")
+#   )
+#   db.session.add(user)
+#   db.session.commit()
+#   return success_response(user.serialize(), 201)
+
 
 @app.route("/api/users/<int:user_id>/", methods=["DELETE"])
 def delete_user(user_id):

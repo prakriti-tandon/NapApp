@@ -89,7 +89,7 @@ def update_user(user_id):
   user.name = body.get("name",user.name)
   user.bank_balance = int(body.get("bank_balance",user.bank_balance)) 
   user.dark = bool(body.get("dark",user.dark))
-  user.quiet = body.get("quiet", user.quiet)
+  user.quiet = bool(body.get("quiet", user.quiet))
   user.region = body.get("region",user.region)
   db.session.commit()
   return success_response(user.serialize(), 201)

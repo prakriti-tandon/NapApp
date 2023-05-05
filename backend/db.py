@@ -44,23 +44,25 @@ class Location(db.Model):
     """
     __tablename__ = "location"
     id = db.Column(db.Integer, primary_key=True,autoincrement=True)
-    name = db.Column(db.String, nullable=False)
-    address = db.Column(db.String, nullable=False)
+    building = db.Column(db.String, nullable=False)
+    room = db.Column(db.String, nullable=False)
     occupied = db.Column(db.Boolean, nullable=False)
     dark = db.Column(db.Boolean, nullable=False)
     quiet = db.Column(db.Boolean, nullable=False)
     region = db.Column(db.String, nullable=False)
+    occupier_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
 
     def __init__(self, **kwargs):
         """
         Assigning values to different fields of a location record
         """
-        self.name = kwargs.get("name","")
-        self.address = kwargs.get("address","")
+        self.building = kwargs.get("building","")
+        self.room = kwargs.get("room","")
         self.occupied = kwargs.get("occupied", False)
         self.dark = kwargs.get("dark", False)
         self.quiet = kwargs.get("quiet", False)
         self.region = kwargs.get("region","")
+        self.occupier_id = kwargs.get("occupier_id", 0)
 
 
     def serialize(self):
@@ -69,8 +71,23 @@ class Location(db.Model):
         """
         return{
             "id" : self.id,
-            "name" : self.name,
-            "address" : self.address,
+            "building" : self.building,
+            "room" : self.room,
+            "occupied" : self.occupied,
+            "dark":self.dark,
+            "quiet":self.quiet, 
+            "region" : self.region,
+            "occupier_id": self.occupier_id
+        }
+
+    def simple_serialize(self):
+        """
+        Returns a dictionary of all fields of a location - except occupier
+        """
+        return{
+            "id" : self.id,
+            "building" : self.building,
+            "room" : self.room,
             "occupied" : self.occupied,
             "dark":self.dark,
             "quiet":self.quiet, 

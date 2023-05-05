@@ -47,45 +47,34 @@ def get_user(user_id):
   return success_response(user.serialize())
 
 
-# @app.route("/api/users/",methods=["POST"])
-# def create_user():
-#   """
-#   Endpoint to create a user
-#   """
-#   body = json.loads(request.data)
-#   if body.get("name") is None or body.get("region") is None: 
-#     return failure_response("incorrect input", 400)
-#   user = User(
-#     name = body.get("name"),
-#     bank_balance = 500, 
-#     dark = bool(body.get("dark",True)),
-#     quiet = bool(body.get("quiet", True)),
-#     region = body.get("region")
-#   )
-#   db.session.add(user)
-#   db.session.commit()
-#   return success_response(user.serialize(), 201)
-
-@app.route("/api/users/<int:user_id>/", methods=["DELETE"])
-def delete_user(user_id):
+@app.route("/api/users/", methods=["DELETE"])
+def delete_user():
     """
-    Endpoint for deleting a user by id
+    Endpoint for deleting a user (protected endpoint - need session token)
     """
-    user = User.query.filter_by(id=user_id).first()
+    success, session_token = extract_token(request)
+    if not success:
+      return session_token
+    
+    user = users_dao.get_user_by_session_token(session_token)
+    
     if user is None:
-        return failure_response("User not found")
+      return failure_response("invalid update token")
+  
     db.session.delete(user)
     db.session.commit()
     return success_response(user.serialize())
 
-@app.route("/api/users/update/<int:user_id>/",methods=["POST"])
-def update_user(user_id):
+@app.route("/api/users/update/",methods=["POST"])
+def update_user():
   """
-  Endpoint to update one or more fields of a user
+  Endpoint to update one or more fields of a user (protected endpoint)
   """
-  user = User.query.filter_by(id=user_id).first()
-  if user is None:
-        return failure_response("User not found!")
+  success, session_token = extract_token(request)
+  if not success:
+    return session_token
+    
+  user = users_dao.get_user_by_session_token(session_token)
   body = json.loads(request.data)
   user.name = body.get("name",user.name)
   user.bank_balance = int(body.get("bank_balance",user.bank_balance)) 

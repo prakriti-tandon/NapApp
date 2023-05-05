@@ -78,22 +78,22 @@ def delete_user(user_id):
     db.session.commit()
     return success_response(user.serialize())
 
-@app.route("/api/users/update/<int:user_id>/",methods=["POST"])
-def update_user(user_id):
-  """
-  Endpoint to update one or more fields of a user
-  """
-  user = User.query.filter_by(id=user_id).first()
-  if user is None:
-        return failure_response("User not found!")
-  body = json.loads(request.data)
-  user.name = body.get("name",user.name)
-  user.bank_balance = int(body.get("bank_balance",user.bank_balance)) 
-  user.dark = bool(body.get("dark",user.dark))
-  user.quiet = bool(body.get("quiet", user.quiet))
-  user.region = body.get("region",user.region)
-  db.session.commit()
-  return success_response(user.serialize(), 201)
+# @app.route("/api/users/update/<int:user_id>/",methods=["POST"])
+# def update_user(user_id):
+#   """
+#   Endpoint to update one or more fields of a user
+#   """
+#   user = User.query.filter_by(id=user_id).first()
+#   if user is None:
+#         return failure_response("User not found!")
+#   body = json.loads(request.data)
+#   user.name = body.get("name",user.name)
+#   user.bank_balance = int(body.get("bank_balance",user.bank_balance)) 
+#   user.dark = bool(body.get("dark",user.dark))
+#   user.quiet = bool(body.get("quiet", user.quiet))
+#   user.region = body.get("region",user.region)
+#   db.session.commit()
+#   return success_response(user.serialize(), 201)
 
 
 def extract_token(request):

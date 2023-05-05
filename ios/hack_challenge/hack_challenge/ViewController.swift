@@ -15,13 +15,32 @@ class ViewController: UIViewController {
     
     //filters array
     private var filters = ["Central", "West", "North"]
-    private var booleans = [false, false, false, false]
+    private var booleans = [false, false, false]
+    
+    // filter buttons
+    let centralButton = UIButton()
+    let westButton = UIButton()
+    let northButton = UIButton()
     
     //sections array
     private var sections = ["Central", "West", "North"]
     private var locations: [[Location]] = [
-        [Location(imageName: "image1", description: "Couch in basement of Barton", campus:"Central", brightness: "dim", noise: "low"), Location(imageName: "image1", description: "Couches in 1st floor Gates", campus: "Central", brightness: "Dim", noise: "Medium"), Location(imageName: "image1", description: "Couch on Third Floor Duffield", campus: "Central", brightness: "Very Bright", noise: "low")]
+        [
+            Location(imageName: "image1", description: "Couch in basement of Barton", campus:"Central", brightness: "dim", noise: "low"),
+            Location(imageName: "image1", description: "Couches in 1st floor Gates", campus: "Central", brightness: "Dim", noise: "Medium"),
+            Location(imageName: "image1", description: "Couch on Third Floor Duffield", campus: "Central", brightness: "Very Bright", noise: "low")],
+        [
+            Location(imageName: "image1", description: "Couch on Bethe House", campus: "West", brightness: "Dim", noise: "Medium")
+        ],
+        [
+            Location(imageName: "image1", description: "Couches in RBG", campus: "North", brightness: "Bright", noise: "Loud")
+        ]
     ]
+    
+    var allSections : [String] = []
+    var allLocations : [[Location]] = []
+    
+    
     //paddings
     let itemPadding: CGFloat = 10
     let sectionPadding: CGFloat = 5
@@ -42,8 +61,38 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        title = "Nap Spots on Campus"
+        title = "NapApp"
         view.backgroundColor = .white
+        
+        allLocations = locations
+        allSections = sections
+        
+        centralButton.setTitle("Central", for: .normal)
+        centralButton.backgroundColor = .systemGray
+        centralButton.setTitleColor(.white, for: .normal)
+        centralButton.translatesAutoresizingMaskIntoConstraints = false
+        centralButton.layer.cornerRadius = 15
+        centralButton.tag = 0
+        centralButton.addTarget(self, action: #selector(filterLocations), for: .touchUpInside)
+        view.addSubview(centralButton)
+        
+        westButton.setTitle("West", for: .normal)
+        westButton.backgroundColor = .systemGray
+        westButton.setTitleColor(.white, for: .normal)
+        westButton.translatesAutoresizingMaskIntoConstraints = false
+        westButton.layer.cornerRadius = 15
+        westButton.tag = 1
+        westButton.addTarget(self, action: #selector(filterLocations), for: .touchUpInside)
+        view.addSubview(westButton)
+        
+        northButton.setTitle("North", for: .normal)
+        northButton.backgroundColor = .systemGray
+        northButton.setTitleColor(.white, for: .normal)
+        northButton.translatesAutoresizingMaskIntoConstraints = false
+        northButton.layer.cornerRadius = 15
+        northButton.tag = 2
+        northButton.addTarget(self, action: #selector(filterLocations), for: .touchUpInside)
+        view.addSubview(northButton)
         
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.minimumInteritemSpacing = itemPadding
@@ -70,14 +119,66 @@ class ViewController: UIViewController {
         
         setupConstraints()
     }
+    
+    
+    @objc func filterLocations(sender: UIButton) {
+        locations = []
+        sections = []
+        
+        booleans[sender.tag].toggle()
+        sender.isSelected.toggle()
+        
+        if (sender.isSelected){
+            sender.backgroundColor = .systemBlue
+        }
+        else{
+            sender.backgroundColor = .systemGray
+        }
+        
+        if (booleans[0]) {
+            locations = locations + [allLocations[0]]
+            sections = sections + [allSections[0]]
+        }
+        
+        if (booleans[1]) {
+            locations = locations + [allLocations[1]]
+            sections = sections + [allSections[1]]
+        }
+        
+        if (booleans[2]) {
+            locations = locations + [allLocations[2]]
+            sections = sections + [allSections[2]]
+        }
+        
+        if (booleans == [true, true, true] || booleans == [false, false, false]){
+            locations = allLocations
+            sections = allSections
+        }
+        
+        collectionView.reloadData()
+    }
+
 
     func setupConstraints() {
         let collectionViewPadding: CGFloat = 12
         
-    
-        
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: collectionViewPadding),
+            centralButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            centralButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            centralButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.2)
+        ])
+        NSLayoutConstraint.activate([
+            westButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            westButton.leadingAnchor.constraint(equalTo: centralButton.trailingAnchor, constant: 50),
+            westButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.2)
+        ])
+        NSLayoutConstraint.activate([
+            northButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            northButton.leadingAnchor.constraint(equalTo: westButton.trailingAnchor, constant: 50),
+            northButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.2)
+        ])
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: centralButton.bottomAnchor, constant: collectionViewPadding),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: collectionViewPadding),
             collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -collectionViewPadding),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -collectionViewPadding)

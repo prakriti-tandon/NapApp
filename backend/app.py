@@ -83,17 +83,15 @@ def update_user(user_id):
   """
   Endpoint to update one or more fields of a user
   """
-  user_old = json.loads((get_user(user_id))[0])
-  print(user_old)
+  user = User.query.filter_by(id=user_id).first()
+  if user is None:
+        return failure_response("User not found!")
   body = json.loads(request.data)
-  user = User(
-    name = body.get("name",user_old.get("name")),
-    bank_balance = int(body.get("bank_balance",user_old.get("bank_balance"))), 
-    dark = bool(body.get("dark",user_old.get("dark"))),
-    quiet = body.get("quiet", user_old.get("quiet")),
-    region = body.get("region",user_old.get("region"))
-  )
-  db.session.add(user)
+  user.name = body.get("name",user.name)
+  user.bank_balance = int(body.get("bank_balance",user.bank_balance)) 
+  user.dark = bool(body.get("dark",user.dark))
+  user.quiet = bool(body.get("quiet", user.quiet))
+  user.region = body.get("region",user.region)
   db.session.commit()
   return success_response(user.serialize(), 201)
 

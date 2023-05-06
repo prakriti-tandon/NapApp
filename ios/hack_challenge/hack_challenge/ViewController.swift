@@ -133,7 +133,7 @@ class ViewController: UIViewController {
         
         setupConstraints()
         createDummyData()
-        print(allLocations)
+//        print(allLocations)
     }
     
     
@@ -206,7 +206,7 @@ class ViewController: UIViewController {
         self.allLocations = [[],[],[]]
         NetworkManager.shared.getLocationSpecific(region: "central") { locations in
             DispatchQueue.main.async {
-                print(locations)
+//                print(locations)
                 self.locations[0] = locations
                 self.allLocations[0] = locations
                 self.collectionView.reloadData()

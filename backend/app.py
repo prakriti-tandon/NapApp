@@ -283,7 +283,8 @@ def update_location_occupancy(loc_id, user_id):
   """
   Endpoint to update location occupancy
   """
-  user = User.query.filter_by(id=user_id).first()
+  if (user_id) > 0:
+    user = User.query.filter_by(id=user_id).first()
   loc = Location.query.filter_by(id=loc_id).first()
   if user_id > 0 and user is None:
     return failure_response("User does not exist!")

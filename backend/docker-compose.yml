@@ -2,6 +2,6 @@ version: '3'
 
 services:
   demo:
-    image: angelicab303/bigrednaps:v1.1
+    image: angelicab303/bigrednaps:v1.2
     ports:
       - "8000:8000"

@@ -62,9 +62,9 @@ class CustomCollectionViewCell: UICollectionViewCell {
     
     
     func update(location: Location) {
-        imageView.image = UIImage(named: location.imageName)
-        labelView.text = location.description
-        if (!location.availability) {
+        imageView.image = UIImage(named: "image1")
+        labelView.text = location.building
+        if (!location.occupied) {
             availabilityLabel.text = "Reserved"
             availabilityLabel.textColor = .white
             availabilityLabel.backgroundColor = .red

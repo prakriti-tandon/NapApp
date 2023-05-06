@@ -17,6 +17,7 @@
 		0B6C5A5429FD9DA000300DDD /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6C5A5329FD9DA000300DDD /* CustomCollectionViewCell.swift */; };
 		0B6C5A5629FE030A00300DDD /* CustomCollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6C5A5529FE030A00300DDD /* CustomCollectionViewHeader.swift */; };
 		0B6C5A5829FE042200300DDD /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6C5A5729FE042100300DDD /* DetailViewController.swift */; };
+		D8FCCE292A05DA4900D6F7BC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FCCE282A05DA4900D6F7BC /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		0B6C5A5329FD9DA000300DDD /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		0B6C5A5529FE030A00300DDD /* CustomCollectionViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewHeader.swift; sourceTree = "<group>"; };
 		0B6C5A5729FE042100300DDD /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		D8FCCE282A05DA4900D6F7BC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				0B6C5A3D29FD9A4A00300DDD /* AppDelegate.swift */,
 				0B6C5A3F29FD9A4A00300DDD /* SceneDelegate.swift */,
 				0B6C5A4129FD9A4A00300DDD /* ViewController.swift */,
+				D8FCCE282A05DA4900D6F7BC /* NetworkManager.swift */,
 				0B6C5A5729FE042100300DDD /* DetailViewController.swift */,
 				0B6C5A5529FE030A00300DDD /* CustomCollectionViewHeader.swift */,
 				0B6C5A5329FD9DA000300DDD /* CustomCollectionViewCell.swift */,
@@ -154,6 +157,7 @@
 				0B6C5A4229FD9A4A00300DDD /* ViewController.swift in Sources */,
 				0B6C5A5429FD9DA000300DDD /* CustomCollectionViewCell.swift in Sources */,
 				0B6C5A3E29FD9A4A00300DDD /* AppDelegate.swift in Sources */,
+				D8FCCE292A05DA4900D6F7BC /* NetworkManager.swift in Sources */,
 				0B6C5A5229FD9B7B00300DDD /* Location.swift in Sources */,
 				0B6C5A4029FD9A4A00300DDD /* SceneDelegate.swift in Sources */,
 				0B6C5A5829FE042200300DDD /* DetailViewController.swift in Sources */,

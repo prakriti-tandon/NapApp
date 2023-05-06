@@ -22,19 +22,21 @@ class ViewController: UIViewController {
     let westButton = UIButton()
     let northButton = UIButton()
     
+    let refreshControl = UIRefreshControl()
+    
     //sections array
     private var sections = ["Central", "West", "North"]
     private var locations: [[Location]] = [
-        [
-            Location(imageName: "image1", description: "Couch in basement of Barton", campus:"Central", brightness: "dim", noise: "low"),
-            Location(imageName: "image1", description: "Couches in 1st floor Gates", campus: "Central", brightness: "Dim", noise: "Medium"),
-            Location(imageName: "image1", description: "Couch on Third Floor Duffield", campus: "Central", brightness: "Very Bright", noise: "low")],
-        [
-            Location(imageName: "image1", description: "Couch on Bethe House", campus: "West", brightness: "Dim", noise: "Medium")
-        ],
-        [
-            Location(imageName: "image1", description: "Couches in RBG", campus: "North", brightness: "Bright", noise: "Loud")
-        ]
+//        [
+//            Location(imageName: "image1", description: "Couch in basement of Barton", campus:"Central", brightness: "dim", noise: "low"),
+//            Location(imageName: "image1", description: "Couches in 1st floor Gates", campus: "Central", brightness: "Dim", noise: "Medium"),
+//            Location(imageName: "image1", description: "Couch on Third Floor Duffield", campus: "Central", brightness: "Very Bright", noise: "low")],
+//        [
+//            Location(imageName: "image1", description: "Couch on Bethe House", campus: "West", brightness: "Dim", noise: "Medium")
+//        ],
+//        [
+//            Location(imageName: "image1", description: "Couches in RBG", campus: "North", brightness: "Bright", noise: "Loud")
+//        ]
     ]
     
     var allSections : [String] = []
@@ -59,6 +61,10 @@ class ViewController: UIViewController {
    
 
     override func viewDidLoad() {
+        
+        var url = URL(string: "http://35.199.32.240:8000/")!
+        let formatParameter = URLQueryItem(name: "format", value: "json")
+        url.append(queryItems: [formatParameter])
         
         super.viewDidLoad()
         title = "NapApp"
@@ -117,7 +123,17 @@ class ViewController: UIViewController {
         collectionView.tag = collectionViewTag
 //        filterCollectionView.tag = filterCollectionViewTag
         
+        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        
+        if #available(iOS 10.0, *) {
+            collectionView.refreshControl = refreshControl
+        } else {
+            collectionView.addSubview(refreshControl)
+        }
+        
         setupConstraints()
+        createDummyData()
+        print(allLocations)
     }
     
     
@@ -183,9 +199,54 @@ class ViewController: UIViewController {
             collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -collectionViewPadding),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -collectionViewPadding)
         ])
+    }
+    
+    func createDummyData() {
+        self.locations = [[],[],[]]
+        self.allLocations = [[],[],[]]
+        NetworkManager.shared.getLocationSpecific(region: "central") { locations in
+            DispatchQueue.main.async {
+                print(locations)
+                self.locations[0] = locations
+                self.allLocations[0] = locations
+                self.collectionView.reloadData()
+            }
+        }
         
+        NetworkManager.shared.getLocationSpecific(region: "north") { locations in
+            DispatchQueue.main.async {
+                self.locations[2] = locations
+                self.allLocations[2] = locations
+                self.collectionView.reloadData()
+            }
+        }
         
-        
+        NetworkManager.shared.getLocationSpecific(region: "west") { locations in
+            DispatchQueue.main.async {
+                self.locations[1] = locations
+                self.allLocations[1] = locations
+                self.collectionView.reloadData()
+            }
+        }
+//        NetworkManager.shared.getAllLocations { locations in
+//            DispatchQueue.main.async {
+//                print(locations)
+//                self.locations = [locations]
+//                self.allLocations = [locations]
+//                self.collectionView.reloadData()
+//            }
+//        }
+    }
+    
+    @objc func refreshData() {
+        //TODO: Refresh Data
+        NetworkManager.shared.getAllLocations { locations in
+            DispatchQueue.main.async {
+                self.allLocations = [locations]
+                self.collectionView.reloadData()
+                self.refreshControl.endRefreshing()
+            }
+        }
     }
 
 }
@@ -296,7 +357,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
 
 extension ViewController: updateCell{
     func updateAvailability(index: Int, section: Int, availability: Bool) {
-        locations[section][index].availability = availability
+        locations[section][index].occupied = availability
         collectionView.reloadData()
     }
     

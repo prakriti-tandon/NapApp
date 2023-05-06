@@ -35,11 +35,11 @@ class DetailViewController: UIViewController {
         
         view.backgroundColor = .white
         
-        picImageView.image = UIImage(named:location.imageName)
+        picImageView.image = UIImage(named: "image1")
         picImageView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(picImageView)
         
-        nameTextField.text = location.description
+//        nameTextField.text = location.description
         nameTextField.font = .systemFont(ofSize: 20)
         nameTextField.backgroundColor = .white
         nameTextField.layer.cornerRadius = 5
@@ -48,7 +48,7 @@ class DetailViewController: UIViewController {
         nameTextField.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(nameTextField)
         
-        if location.availability {
+        if location.occupied {
             snatchButton.setTitle("Snatch location", for: .normal)
             snatchButton.setTitleColor(.black, for: .normal)
             snatchButton.backgroundColor = .green

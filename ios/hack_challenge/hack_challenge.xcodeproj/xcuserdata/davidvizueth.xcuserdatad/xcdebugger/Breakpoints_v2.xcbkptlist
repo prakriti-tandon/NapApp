@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "8F5227FF-13C0-4884-9585-707E55C42EB9"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "963FFFC3-20A8-4A77-B9AB-CB62A83856E1"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "hack_challenge/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8753542F-3196-4542-80B1-D02E568D83F7"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "hack_challenge/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "98032480-8793-46CF-B254-4AFC40D7D2FC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "hack_challenge/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "207"
+            endingLineNumber = "207"
+            landmarkName = "createDummyData()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "98032480-8793-46CF-B254-4AFC40D7D2FC - e1d0487d670c7ccc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "hack_challenge.ViewController.createDummyData() -&gt; ()"
+                  moduleName = "hack_challenge"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/davidvizueth/sp23/ios/hack23/AppDevHack23/ios/hack_challenge/hack_challenge/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "207"
+                  endingLineNumber = "207"
+                  offsetFromSymbolStart = "284">
+               </Location>
+               <Location
+                  uuid = "98032480-8793-46CF-B254-4AFC40D7D2FC - 54c5d0a42a78d8b9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #3 (Swift.Array&lt;hack_challenge.Location&gt;) -&gt; () in hack_challenge.ViewController.createDummyData() -&gt; ()"
+                  moduleName = "hack_challenge"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/davidvizueth/sp23/ios/hack23/AppDevHack23/ios/hack_challenge/hack_challenge/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "207"
+                  endingLineNumber = "207"
+                  offsetFromSymbolStart = "36">
+               </Location>
+               <Location
+                  uuid = "98032480-8793-46CF-B254-4AFC40D7D2FC - e1d0487d670c7ccc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "hack_challenge.ViewController.createDummyData() -&gt; ()"
+                  moduleName = "hack_challenge"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/davidvizueth/sp23/ios/hack23/AppDevHack23/ios/hack_challenge/hack_challenge/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "207"
+                  endingLineNumber = "207"
+                  offsetFromSymbolStart = "372">
+               </Location>
+               <Location
+                  uuid = "98032480-8793-46CF-B254-4AFC40D7D2FC - 2ad52efa9a892c98"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Array&lt;hack_challenge.Location&gt;) -&gt; () in hack_challenge.ViewController.createDummyData() -&gt; ()"
+                  moduleName = "hack_challenge"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/davidvizueth/sp23/ios/hack23/AppDevHack23/ios/hack_challenge/hack_challenge/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "208"
+                  endingLineNumber = "208"
+                  offsetFromSymbolStart = "168">
+               </Location>
+               <Location
+                  uuid = "98032480-8793-46CF-B254-4AFC40D7D2FC - e1d0487d670c7ccc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "hack_challenge.ViewController.createDummyData() -&gt; ()"
+                  moduleName = "hack_challenge"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/davidvizueth/sp23/ios/hack23/AppDevHack23/ios/hack_challenge/hack_challenge/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "207"
+                  endingLineNumber = "207"
+                  offsetFromSymbolStart = "332">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "05A35744-2CB6-462B-9934-C7D077060743"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "hack_challenge/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "216"
+            endingLineNumber = "216"
+            landmarkName = "createDummyData()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "05A35744-2CB6-462B-9934-C7D077060743 - 5dd6f81f2308580"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Array&lt;hack_challenge.Location&gt;) -&gt; () in hack_challenge.ViewController.createDummyData() -&gt; ()"
+                  moduleName = "hack_challenge"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/davidvizueth/sp23/ios/hack23/AppDevHack23/ios/hack_challenge/hack_challenge/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "215"
+                  endingLineNumber = "215"
+                  offsetFromSymbolStart = "168">
+               </Location>
+               <Location
+                  uuid = "05A35744-2CB6-462B-9934-C7D077060743 - b32b73c05b640d62"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #2 (Swift.Array&lt;hack_challenge.Location&gt;) -&gt; () in hack_challenge.ViewController.createDummyData() -&gt; ()"
+                  moduleName = "hack_challenge"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/davidvizueth/sp23/ios/hack23/AppDevHack23/ios/hack_challenge/hack_challenge/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "216"
+                  endingLineNumber = "216"
+                  offsetFromSymbolStart = "52">
+               </Location>
+               <Location
+                  uuid = "05A35744-2CB6-462B-9934-C7D077060743 - e1d0487d670c7ff4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "hack_challenge.ViewController.createDummyData() -&gt; ()"
+                  moduleName = "hack_challenge"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/davidvizueth/sp23/ios/hack23/AppDevHack23/ios/hack_challenge/hack_challenge/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "215"
+                  endingLineNumber = "215"
+                  offsetFromSymbolStart = "552">
+               </Location>
+               <Location
+                  uuid = "05A35744-2CB6-462B-9934-C7D077060743 - 5dd6f81f2308567"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Array&lt;hack_challenge.Location&gt;) -&gt; () in hack_challenge.ViewController.createDummyData() -&gt; ()"
+                  moduleName = "hack_challenge"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/davidvizueth/sp23/ios/hack23/AppDevHack23/ios/hack_challenge/hack_challenge/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "216"
+                  endingLineNumber = "216"
+                  offsetFromSymbolStart = "168">
+               </Location>
+               <Location
+                  uuid = "05A35744-2CB6-462B-9934-C7D077060743 - e1d0487d670c7ff4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "hack_challenge.ViewController.createDummyData() -&gt; ()"
+                  moduleName = "hack_challenge"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/davidvizueth/sp23/ios/hack23/AppDevHack23/ios/hack_challenge/hack_challenge/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "215"
+                  endingLineNumber = "215"
+                  offsetFromSymbolStart = "512">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1D6E4535-032E-4CCF-8D34-C0C0F6C872F6"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "hack_challenge/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "224"
+            endingLineNumber = "224"
+            landmarkName = "createDummyData()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "1D6E4535-032E-4CCF-8D34-C0C0F6C872F6 - 54c5d0a42a78da89"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #3 (Swift.Array&lt;hack_challenge.Location&gt;) -&gt; () in hack_challenge.ViewController.createDummyData() -&gt; ()"
+                  moduleName = "hack_challenge"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/davidvizueth/sp23/ios/hack23/AppDevHack23/ios/hack_challenge/hack_challenge/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "223"
+                  endingLineNumber = "223"
+                  offsetFromSymbolStart = "168">
+               </Location>
+               <Location
+                  uuid = "1D6E4535-032E-4CCF-8D34-C0C0F6C872F6 - b32b73c05b640c6a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #3 (Swift.Array&lt;hack_challenge.Location&gt;) -&gt; () in hack_challenge.ViewController.createDummyData() -&gt; ()"
+                  moduleName = "hack_challenge"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/davidvizueth/sp23/ios/hack23/AppDevHack23/ios/hack_challenge/hack_challenge/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "224"
+                  endingLineNumber = "224"
+                  offsetFromSymbolStart = "56">
+               </Location>
+               <Location
+                  uuid = "1D6E4535-032E-4CCF-8D34-C0C0F6C872F6 - e1d0487d670c7efc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "hack_challenge.ViewController.createDummyData() -&gt; ()"
+                  moduleName = "hack_challenge"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/davidvizueth/sp23/ios/hack23/AppDevHack23/ios/hack_challenge/hack_challenge/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "223"
+                  endingLineNumber = "223"
+                  offsetFromSymbolStart = "672">
+               </Location>
+               <Location
+                  uuid = "1D6E4535-032E-4CCF-8D34-C0C0F6C872F6 - 54c5d0a42a78da6e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #3 (Swift.Array&lt;hack_challenge.Location&gt;) -&gt; () in hack_challenge.ViewController.createDummyData() -&gt; ()"
+                  moduleName = "hack_challenge"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/davidvizueth/sp23/ios/hack23/AppDevHack23/ios/hack_challenge/hack_challenge/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "224"
+                  endingLineNumber = "224"
+                  offsetFromSymbolStart = "168">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AB59136C-C8EC-4CD6-A929-C9258012D32E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "hack_challenge/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "230"
+            endingLineNumber = "230"
+            landmarkName = "createDummyData()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "302979F9-1B16-4DC6-A3F2-F8785EE378C2"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "hack_challenge/NetworkManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "getLocationSpecific(region:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8165836E-3BB0-45F9-B7EB-534BF8B88491"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "hack_challenge/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "209"
+            endingLineNumber = "209"
+            landmarkName = "createDummyData()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "8165836E-3BB0-45F9-B7EB-534BF8B88491 - b32b73c05b640e7b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #1 (Swift.Array&lt;hack_challenge.Location&gt;) -&gt; () in hack_challenge.ViewController.createDummyData() -&gt; ()"
+                  moduleName = "hack_challenge"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/davidvizueth/sp23/ios/hack23/AppDevHack23/ios/hack_challenge/hack_challenge/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "209"
+                  endingLineNumber = "209"
+                  offsetFromSymbolStart = "72">
+               </Location>
+               <Location
+                  uuid = "8165836E-3BB0-45F9-B7EB-534BF8B88491 - b32b73c05b640e7b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #1 (Swift.Array&lt;hack_challenge.Location&gt;) -&gt; () in hack_challenge.ViewController.createDummyData() -&gt; ()"
+                  moduleName = "hack_challenge"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/davidvizueth/sp23/ios/hack23/AppDevHack23/ios/hack_challenge/hack_challenge/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "209"
+                  endingLineNumber = "209"
+                  offsetFromSymbolStart = "108">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

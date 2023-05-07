@@ -38,7 +38,7 @@ class DetailViewController: UIViewController {
         picImageView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(picImageView)
         
-//        nameTextField.text = location.description
+        nameTextField.text = location.room
         nameTextField.font = .systemFont(ofSize: 20)
         nameTextField.backgroundColor = .white
         nameTextField.layer.cornerRadius = 5

@@ -36,10 +36,10 @@ class CustomCollectionViewCell: UICollectionViewCell {
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: self.contentView.topAnchor),
-            imageView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
-            imageView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
-            imageView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -10)
+            imageView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 30),
+            imageView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 50),
+            imageView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -50),
+            imageView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -60)
         ])
         
         NSLayoutConstraint.activate([

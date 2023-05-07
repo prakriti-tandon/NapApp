@@ -72,7 +72,7 @@ class ViewController: UIViewController {
         
         super.viewDidLoad()
         title = "NapApp"
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(named: "blue")
         
         allLocations = locations
         allSections = sections
@@ -116,7 +116,7 @@ class ViewController: UIViewController {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(CustomCollectionViewCell.self, forCellWithReuseIdentifier: cellReuseID)
         collectionView.dataSource = self
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = UIColor(named: "gray")
         collectionView.delegate = self
         view.addSubview(collectionView)
         

@@ -51,9 +51,14 @@ class ViewController: UIViewController {
     let collectionViewTag = 0
     let filterCollectionViewTag = 1
     
+    let userButton = UIButton()
+    let sleepButton = UIButton()
+    
    
 
     override func viewDidLoad() {
+        
+        navigationItem.hidesBackButton = true
         
         var url = URL(string: "http://35.199.32.240:8000/")!
         let formatParameter = URLQueryItem(name: "format", value: "json")
@@ -127,6 +132,22 @@ class ViewController: UIViewController {
             collectionView.addSubview(refreshControl)
         }
         
+        userButton.setImage(UIImage(named: "userimg"), for: .normal)
+        userButton.backgroundColor =  .white
+        userButton.translatesAutoresizingMaskIntoConstraints = false
+        userButton.layer.cornerRadius = 0
+        userButton.imageView?.contentMode = .scaleAspectFit
+        userButton.addTarget(self, action: #selector(profilePush), for: .touchUpInside)
+        view.addSubview(userButton)
+        
+        sleepButton.setImage(UIImage(named: "sleepimg"), for: .normal)
+        sleepButton.backgroundColor = .white
+        sleepButton.translatesAutoresizingMaskIntoConstraints = false
+        sleepButton.layer.cornerRadius = 0
+        sleepButton.imageView?.contentMode = .scaleAspectFit
+//        sleepButton.addTarget(self, action: #selector(profilePush), for: .touchUpInside)
+        view.addSubview(sleepButton)
+        
         setupConstraints()
         createDummyData()
     }
@@ -175,7 +196,7 @@ class ViewController: UIViewController {
 
 
     func setupConstraints() {
-        let collectionViewPadding: CGFloat = 12
+//        let collectionViewPadding: CGFloat = 12
         
         NSLayoutConstraint.activate([
             centralButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -198,8 +219,20 @@ class ViewController: UIViewController {
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: centralButton.bottomAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -collectionViewPadding),
+            collectionView.bottomAnchor.constraint(equalTo: userButton.topAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
+        ])
+        NSLayoutConstraint.activate([
+            userButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            userButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
+            userButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            userButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5)
+        ])
+        NSLayoutConstraint.activate([
+            sleepButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            sleepButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
+            sleepButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            sleepButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5)
         ])
     }
     
@@ -289,6 +322,11 @@ class ViewController: UIViewController {
             self.locations = self.locations + [north]
             self.sections = self.sections + [allSections[2]]
         }
+    }
+    
+    @objc func profilePush() {
+        let lvc = LoginViewController()
+        navigationController?.pushViewController(lvc, animated: true)
     }
 
 }

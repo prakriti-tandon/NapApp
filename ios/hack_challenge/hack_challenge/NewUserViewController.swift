@@ -1,18 +1,19 @@
 //
-//  LoginViewController.swift
+//  NewUserViewController.swift
 //  hack_challenge
 //
-//  Created by Angela YUAN on 2023/5/6.
+//  Created by David Vizueth on 5/7/23.
 //
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class NewUserViewController: UIViewController {
+
 
     let login = UITextField()
+    let email = UITextField()
     let userName = UITextField()
     let password = UITextField()
-    let button = UIButton()
     let icon = UIImageView()
     let newAccount = UIButton()
     
@@ -24,11 +25,18 @@ class LoginViewController: UIViewController {
         login.translatesAutoresizingMaskIntoConstraints = false
         login.text = "NapApp"
         login.font = .boldSystemFont(ofSize: 50)
-//        login.backgroundColor = UIColor(named: "purple")
         login.textColor = .black
         login.clipsToBounds = true
         login.textAlignment = .center
         view.addSubview(login)
+        
+        email.translatesAutoresizingMaskIntoConstraints = false
+        email.text = "Email"
+        email.font = .systemFont(ofSize: 20)
+        email.borderStyle = .roundedRect
+        email.clipsToBounds = true
+        email.textAlignment = .center
+        view.addSubview(email)
         
         userName.translatesAutoresizingMaskIntoConstraints = false
         userName.text = "username"
@@ -52,16 +60,9 @@ class LoginViewController: UIViewController {
         icon.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(icon)
         
-        
-        button.setTitle("Login", for: .normal)
-        button.setTitleColor(.systemBlue, for: .normal)
-        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(button)
-        
-        newAccount.setTitle("Make a New Account", for: .normal)
+        newAccount.setTitle("Create", for: .normal)
         newAccount.setTitleColor(.systemBlue, for: .normal)
-        newAccount.addTarget(self, action: #selector(newAccAction), for: .touchUpInside)
+        newAccount.addTarget(self, action: #selector(createAction), for: .touchUpInside)
         newAccount.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(newAccount)
         
@@ -89,8 +90,14 @@ class LoginViewController: UIViewController {
         ])
         
         NSLayoutConstraint.activate([
+            email.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            email.topAnchor.constraint(equalTo: icon.bottomAnchor, constant: 50)
+
+        ])
+        
+        NSLayoutConstraint.activate([
             userName.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            userName.topAnchor.constraint(equalTo: icon.bottomAnchor, constant: 100),
+            userName.topAnchor.constraint(equalTo: email.bottomAnchor, constant: 30),
 
         ])
         
@@ -100,29 +107,35 @@ class LoginViewController: UIViewController {
 
         ])
         
-        
-        NSLayoutConstraint.activate([
-            button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            button.topAnchor.constraint(equalTo: password.bottomAnchor, constant: 30)
-
-        ])
-        
         NSLayoutConstraint.activate([
             newAccount.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            newAccount.topAnchor.constraint(equalTo: button.bottomAnchor, constant: 5)
+            newAccount.topAnchor.constraint(equalTo: password.bottomAnchor, constant: 30)
         ])
 
     }
     
     
-    @objc func buttonAction() {
+    @objc func createAction() {
+        
+        if let email = email.text {
+            if let userName = userName.text {
+                if let password = password.text{
+                    NetworkManager.shared.registerUser(email: email, password: password, name: userName) {_ in
+                        
+                    }
+                }
+                else { error() }
+            }
+            else { error() }
+        }
+        else { error() }
+        
         let vc = ViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    @objc func newAccAction() {
-        let nvc = NewUserViewController()
-        navigationController?.pushViewController(nvc, animated: true)
+    func error() {
+        print("Error Occurs Here")
     }
     
 }

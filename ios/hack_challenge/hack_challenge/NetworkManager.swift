@@ -83,6 +83,33 @@ class NetworkManager {
         task.resume()
     }
     
+    func registerUser(email: String, password: String, name: String, completion: @escaping (User) -> Void) {
+        let newURL = URL(string: "http://35.199.32.240:8000/register/")!
+        var request = URLRequest(url: newURL)
+        request.httpMethod = "POST"
+        
+        let body: [String: Any] = [
+            "email": email,
+            "password": password,
+            "name": name
+        ]
+        
+        request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: .fragmentsAllowed)
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, err in
+            if let data = data {
+                do {
+                    let decoder = JSONDecoder()
+                    let response = try decoder.decode(User.self, from: data)
+                    completion(response)
+                }
+                catch (let error) {
+                    print(error.localizedDescription)
+                }
+            }
+        }
+        task.resume()
+    }
 //
 //    func changeMessage(id: Int, body: String, sender: String, completion: @escaping (Message) -> Void) {
 //        var request = URLRequest(url: url)

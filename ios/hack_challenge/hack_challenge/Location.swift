@@ -9,13 +9,6 @@ import Foundation
 
 struct Location: Codable {
     
-//    var imageName: String
-//    var description: String
-//    var campus: String
-//    var brightness: String
-//    var noise: String
-//    var selected: Bool
-//    var availability: Bool
     var id: Int
     var building: String
     var room: String
@@ -24,17 +17,6 @@ struct Location: Codable {
     var quiet: Bool
     var region: String
     var occupier_id: Int
-//    var imageName = "image1"
-
-//    init(imageName: String = "image1", description: String, campus: String, brightness: String, noise: String, availability: Bool = true) {
-//        self.imageName = imageName
-//        self.description = description
-//        self.campus = campus
-//        self.brightness = brightness
-//        self.noise = noise
-//        self.selected = false
-//        self.availability = availability
-//    }
     
     init(id: Int, building: String, room: String, occupied: Bool, dark: Bool, quiet: Bool, region: String, occupier_id: Int) {
         self.id = id

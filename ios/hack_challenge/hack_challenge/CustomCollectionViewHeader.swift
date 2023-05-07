@@ -14,7 +14,7 @@ class CustomCollectionViewHeader: UICollectionReusableView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .boldSystemFont(ofSize: 20)
+        label.font = .boldSystemFont(ofSize: 30)
         addSubview(label)
         setupConstraints()
     }
@@ -24,7 +24,7 @@ class CustomCollectionViewHeader: UICollectionReusableView {
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            label.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
             label.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             label.topAnchor.constraint(equalTo: self.topAnchor),
             label.bottomAnchor.constraint(equalTo: self.bottomAnchor)

@@ -26,18 +26,7 @@ class ViewController: UIViewController {
     
     //sections array
     private var sections = ["Central", "West", "North"]
-    private var locations: [[Location]] = [
-//        [
-//            Location(imageName: "image1", description: "Couch in basement of Barton", campus:"Central", brightness: "dim", noise: "low"),
-//            Location(imageName: "image1", description: "Couches in 1st floor Gates", campus: "Central", brightness: "Dim", noise: "Medium"),
-//            Location(imageName: "image1", description: "Couch on Third Floor Duffield", campus: "Central", brightness: "Very Bright", noise: "low")],
-//        [
-//            Location(imageName: "image1", description: "Couch on Bethe House", campus: "West", brightness: "Dim", noise: "Medium")
-//        ],
-//        [
-//            Location(imageName: "image1", description: "Couches in RBG", campus: "North", brightness: "Bright", noise: "Loud")
-//        ]
-    ]
+    private var locations: [[Location]] = []
     
     var allSections : [String] = []
     var allLocations : [[Location]] = []
@@ -78,28 +67,31 @@ class ViewController: UIViewController {
         allSections = sections
         
         centralButton.setTitle("Central", for: .normal)
-        centralButton.backgroundColor = .systemGray
-        centralButton.setTitleColor(.white, for: .normal)
+        centralButton.backgroundColor = .white
+        centralButton.setTitleColor(.black, for: .normal)
+        centralButton.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         centralButton.translatesAutoresizingMaskIntoConstraints = false
-        centralButton.layer.cornerRadius = 15
+        centralButton.layer.cornerRadius = 0
         centralButton.tag = 0
         centralButton.addTarget(self, action: #selector(filterLocations), for: .touchUpInside)
         view.addSubview(centralButton)
         
         westButton.setTitle("West", for: .normal)
-        westButton.backgroundColor = .systemGray
-        westButton.setTitleColor(.white, for: .normal)
+        westButton.backgroundColor = .white
+        westButton.setTitleColor(.black, for: .normal)
+        westButton.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         westButton.translatesAutoresizingMaskIntoConstraints = false
-        westButton.layer.cornerRadius = 15
+        westButton.layer.cornerRadius = 0
         westButton.tag = 1
         westButton.addTarget(self, action: #selector(filterLocations), for: .touchUpInside)
         view.addSubview(westButton)
         
         northButton.setTitle("North", for: .normal)
-        northButton.backgroundColor = .systemGray
-        northButton.setTitleColor(.white, for: .normal)
+        northButton.backgroundColor = .white
+        northButton.setTitleColor(.black, for: .normal)
+        northButton.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         northButton.translatesAutoresizingMaskIntoConstraints = false
-        northButton.layer.cornerRadius = 15
+        northButton.layer.cornerRadius = 0
         northButton.tag = 2
         northButton.addTarget(self, action: #selector(filterLocations), for: .touchUpInside)
         view.addSubview(northButton)
@@ -116,7 +108,7 @@ class ViewController: UIViewController {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(CustomCollectionViewCell.self, forCellWithReuseIdentifier: cellReuseID)
         collectionView.dataSource = self
-        collectionView.backgroundColor = UIColor(named: "gray")
+        collectionView.backgroundColor = UIColor(named: "lightgray")
         collectionView.delegate = self
         view.addSubview(collectionView)
         
@@ -137,7 +129,6 @@ class ViewController: UIViewController {
         
         setupConstraints()
         createDummyData()
-        print(allLocations)
     }
     
     
@@ -149,10 +140,14 @@ class ViewController: UIViewController {
         sender.isSelected.toggle()
         
         if (sender.isSelected){
-            sender.backgroundColor = .systemBlue
+            sender.layer.borderWidth = 1.0
+            sender.layer.borderColor = UIColor.blue.cgColor
+//            sender.backgroundColor = .opaqueSeparator
         }
         else{
-            sender.backgroundColor = .systemGray
+//            sender.backgroundColor = .white
+            sender.layer.borderWidth = 0.0
+            sender.layer.borderColor = nil
         }
         
         if (booleans[0]) {
@@ -184,33 +179,37 @@ class ViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             centralButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            centralButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-            centralButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.2)
+            centralButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            centralButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier:  1/3),
+            centralButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 45)
         ])
         NSLayoutConstraint.activate([
             westButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            westButton.leadingAnchor.constraint(equalTo: centralButton.trailingAnchor, constant: 50),
-            westButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.2)
+            westButton.leadingAnchor.constraint(equalTo: centralButton.trailingAnchor),
+            westButton.trailingAnchor.constraint(equalTo: northButton.leadingAnchor),
+            westButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 45)
         ])
         NSLayoutConstraint.activate([
             northButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            northButton.leadingAnchor.constraint(equalTo: westButton.trailingAnchor, constant: 50),
-            northButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.2)
+            northButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            northButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1/3),
+            northButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 45)
         ])
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: centralButton.bottomAnchor, constant: collectionViewPadding),
-            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: collectionViewPadding),
+            collectionView.topAnchor.constraint(equalTo: centralButton.bottomAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -collectionViewPadding),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -collectionViewPadding)
+            collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
         ])
     }
     
     func createDummyData() {
         self.locations = [[],[],[]]
         self.allLocations = [[],[],[]]
+        self.sections = ["Central", "West", "North"]
+        self.allSections = ["Central", "West", "North"]
         NetworkManager.shared.getLocationSpecific(region: "central") { locations in
             DispatchQueue.main.async {
-                print(locations)
                 self.locations[0] = locations
                 self.allLocations[0] = locations
                 self.central = locations
@@ -235,19 +234,13 @@ class ViewController: UIViewController {
                 self.collectionView.reloadData()
             }
         }
-//        NetworkManager.shared.getAllLocations { locations in
-//            DispatchQueue.main.async {
-//                print(locations)
-//                self.locations = [locations]
-//                self.allLocations = [locations]
-//                self.collectionView.reloadData()
-//            }
-//        }
     }
     
     @objc func refreshData() {
         self.allLocations = [[],[],[]]
         self.locations = []
+        self.allSections = ["Central", "West", "North"]
+        self.sections = []
             
         NetworkManager.shared.getLocationSpecific(region: "central") { locations in
             DispatchQueue.main.async {
@@ -279,20 +272,23 @@ class ViewController: UIViewController {
         self.refreshControl.endRefreshing()
         }
     
+    
     @objc func reorganizeData() {
         self.locations = []
         if (self.booleans[0] || self.booleans == [false, false, false]) {
             self.locations = self.locations + [central]
+            self.sections = self.sections + [allSections[0]]
+        }
+        
+        if (self.booleans[1] || self.booleans == [false, false, false]) {
+            self.locations = self.locations + [west]
+            self.sections = self.sections + [allSections[1]]
         }
         
         if (self.booleans[2] || self.booleans == [false, false, false]) {
             self.locations = self.locations + [north]
+            self.sections = self.sections + [allSections[2]]
         }
-        
-        if (self.booleans[1] || self.booleans == [true, true, true] || self.booleans == [false, false, false]) {
-            self.locations = self.locations + [west]
-        }
-        
     }
 
 }

@@ -35,8 +35,8 @@ class NetworkManager {
     }
     
     func getLocationSpecific(region: String, completion: @escaping ([Location]) -> Void) {
-        var newURLString = "http://35.199.32.240:8000/api/locations/" + region
-        var newURL = URL(string: newURLString)!
+        let newURLString = "http://35.199.32.240:8000/api/locations/" + region
+        let newURL = URL(string: newURLString)!
         var request = URLRequest(url: newURL)
         request.httpMethod = "GET"
         
@@ -56,9 +56,8 @@ class NetworkManager {
     }
     
     func updateOccupacy(id: Int, user_id: Int, completion: @escaping (Location) -> Void) {
-        var newURLString = "http://35.199.32.240:8000/api/locations/" + String(id) + "/" + String(user_id)
-        print(newURLString)
-        var newURL = URL(string: newURLString)!
+        let newURLString = "http://35.199.32.240:8000/api/locations/" + String(id) + "/" + String(user_id)
+        let newURL = URL(string: newURLString)!
         var request = URLRequest(url: newURL)
         request.httpMethod = "POST"
 //

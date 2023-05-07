@@ -30,8 +30,8 @@
             filePath = "hack_challenge/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "252"
-            endingLineNumber = "252"
+            startingLineNumber = "245"
+            endingLineNumber = "245"
             landmarkName = "refreshData()"
             landmarkType = "7">
             <Locations>
@@ -108,8 +108,8 @@
             filePath = "hack_challenge/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "261"
-            endingLineNumber = "261"
+            startingLineNumber = "254"
+            endingLineNumber = "254"
             landmarkName = "refreshData()"
             landmarkType = "7">
             <Locations>
@@ -186,8 +186,8 @@
             filePath = "hack_challenge/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "270"
-            endingLineNumber = "270"
+            startingLineNumber = "263"
+            endingLineNumber = "263"
             landmarkName = "refreshData()"
             landmarkType = "7">
             <Locations>
@@ -249,8 +249,8 @@
             filePath = "hack_challenge/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "251"
-            endingLineNumber = "251"
+            startingLineNumber = "244"
+            endingLineNumber = "244"
             landmarkName = "refreshData()"
             landmarkType = "7">
             <Locations>
@@ -297,8 +297,8 @@
             filePath = "hack_challenge/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "408"
-            endingLineNumber = "408"
+            startingLineNumber = "404"
+            endingLineNumber = "404"
             landmarkName = "updateAvailability(index:section:availability:)"
             landmarkType = "7">
             <Locations>
@@ -345,8 +345,8 @@
             filePath = "hack_challenge/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "415"
-            endingLineNumber = "415"
+            startingLineNumber = "411"
+            endingLineNumber = "411"
             landmarkName = "updateAvailability(index:section:availability:)"
             landmarkType = "7">
             <Locations>

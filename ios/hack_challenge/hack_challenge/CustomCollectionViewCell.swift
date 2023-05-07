@@ -21,7 +21,8 @@ class CustomCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
-        labelView.textColor = .purple
+        labelView.textColor = .white
+        labelView.font = UIFont.boldSystemFont(ofSize: 22)
         labelView.clipsToBounds = true
         contentView.addSubview(labelView)
         labelView.translatesAutoresizingMaskIntoConstraints = false
@@ -36,20 +37,20 @@ class CustomCollectionViewCell: UICollectionViewCell {
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 30),
-            imageView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 50),
-            imageView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -50),
-            imageView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -60)
+            imageView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 0),
+            imageView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: -20),
+            imageView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: 20),
+            imageView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: 0)
         ])
         
         NSLayoutConstraint.activate([
-            labelView.topAnchor.constraint(equalTo: imageView.bottomAnchor),
+            labelView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -30),
             labelView.leadingAnchor.constraint(equalTo: imageView.leadingAnchor)
         ])
         
         NSLayoutConstraint.activate([
             availabilityLabel.centerYAnchor.constraint(equalTo: labelView.centerYAnchor),
-            availabilityLabel.leadingAnchor.constraint(equalTo: labelView.trailingAnchor, constant: 20)
+            availabilityLabel.trailingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: -5)
         ])
         
         
@@ -61,7 +62,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
     
     
     func update(location: Location) {
-        imageView.image = UIImage(named: "image1")
+        imageView.image = UIImage(named: location.building)
         labelView.text = location.building
         if (location.occupied) {
             availabilityLabel.text = "Reserved"

@@ -10,6 +10,10 @@ class DetailViewController: UIViewController {
     
     let picImageView = UIImageView()
     let nameTextField = UILabel()
+    let brightness = UILabel()
+    let dimness = UILabel()
+    let noiseLevel = UILabel()
+    let quiet = UILabel()
     let availabilityTextField = UILabel()
     let snatchButton = UIButton()
     let locationTextField = UILabel()
@@ -20,7 +24,7 @@ class DetailViewController: UIViewController {
     var section: Int
     var index: Int
     
-    let infoPaddingTop = CGFloat(integerLiteral: 20)
+    let infoPaddingTop = CGFloat(integerLiteral: 40)
     let infoPaddingLead = CGFloat(integerLiteral: 10)
     let infoPaddingBetween = CGFloat(integerLiteral: 40)
     
@@ -54,13 +58,65 @@ class DetailViewController: UIViewController {
         nameTextField.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(nameTextField)
         
+        
+        //add
+        
+        if !location.dark {
+            dimness.text = "Light"
+            dimness.font = UIFont.boldSystemFont(ofSize: 20)
+            dimness.backgroundColor = .systemGray5
+            dimness.layer.cornerRadius = 5
+            dimness.clipsToBounds = true
+            dimness.textAlignment = .center
+            dimness.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(dimness)
+        }
+        
+        else {
+            dimness.text = "Dark"
+            dimness.font = UIFont.boldSystemFont(ofSize: 20)
+            dimness.backgroundColor = .systemGray5
+            dimness.layer.cornerRadius = 5
+            dimness.clipsToBounds = true
+            dimness.textAlignment = .center
+            dimness.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(dimness)
+        }
+        
+        
+        //edit
+        if !location.quiet {
+            quiet.text = "Loud"
+            quiet.font = UIFont.boldSystemFont(ofSize: 20)
+            quiet.backgroundColor = .systemGray5
+            
+            quiet.layer.cornerRadius = 5
+            quiet.clipsToBounds = true
+            quiet.textAlignment = .center
+            quiet.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(quiet)
+        }
+        
+        else {
+            quiet.text = "Quiet"
+            quiet.font = UIFont.boldSystemFont(ofSize: 20)
+            quiet.backgroundColor = .systemGray5
+            quiet.layer.cornerRadius = 5
+            quiet.clipsToBounds = true
+            quiet.textAlignment = .center
+            quiet.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(quiet)
+        }
+            
+            
+            
         if !location.occupied {
             availabilityTextField.text = "Available"
             availabilityTextField.textColor = UIColor(named: "darkgreen")
             
-            snatchButton.setTitle("Snatch location", for: .normal)
+            snatchButton.setTitle("Reserve", for: .normal)
             snatchButton.setTitleColor(.black, for: .normal)
-            snatchButton.backgroundColor = .green
+            snatchButton.backgroundColor = UIColor(named: "green")
             snatchButton.tintColor = .green
             snatchButton.addTarget(self, action: #selector(snatch), for: .touchUpInside)
         }
@@ -86,10 +142,23 @@ class DetailViewController: UIViewController {
         locationTextField.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(locationTextField)
         
+        brightness.text = "Brightness: "
+        brightness.textColor = UIColor.black
+        brightness.font = UIFont.systemFont(ofSize: 20)
+        brightness.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(brightness)
+        
+        noiseLevel.text = "Noise Level: "
+        noiseLevel.textColor = UIColor.black
+        noiseLevel.font = UIFont.systemFont(ofSize: 20)
+        noiseLevel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(noiseLevel)
+        
         roomTextField.text = location.room
         roomTextField.textColor = UIColor.black
         roomTextField.font = UIFont.boldSystemFont(ofSize: 20)
         roomTextField.translatesAutoresizingMaskIntoConstraints = false
+        roomTextField.backgroundColor = .systemGray5
         view.addSubview(roomTextField)
 //        roomTextField.layer.borderWidth = 1
 //        roomTextField.layer.borderColor = UIColor.black.cgColor
@@ -147,12 +216,33 @@ class DetailViewController: UIViewController {
             ])
             
             NSLayoutConstraint.activate([
+                brightness.topAnchor.constraint(equalTo: locationTextField.bottomAnchor, constant: infoPaddingTop),
+                brightness.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: infoPaddingLead)
+            ])
+            
+            NSLayoutConstraint.activate([
+                noiseLevel.topAnchor.constraint(equalTo: brightness.bottomAnchor, constant: infoPaddingTop),
+                noiseLevel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: infoPaddingLead)
+            ])
+            
+            
+            NSLayoutConstraint.activate([
                 roomTextField.centerYAnchor.constraint(equalTo: locationTextField.centerYAnchor),
                 roomTextField.leadingAnchor.constraint(equalTo: locationTextField.trailingAnchor, constant: infoPaddingBetween)
             ])
             
             NSLayoutConstraint.activate([
-                snatchButton.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 90),
+                dimness.topAnchor.constraint(equalTo: roomTextField.bottomAnchor, constant: infoPaddingTop),
+                dimness.leadingAnchor.constraint(equalTo: locationTextField.trailingAnchor, constant: infoPaddingBetween)
+            ])
+            
+            NSLayoutConstraint.activate([
+                quiet.topAnchor.constraint(equalTo: dimness.bottomAnchor, constant: infoPaddingTop),
+                quiet.leadingAnchor.constraint(equalTo: locationTextField.trailingAnchor, constant: infoPaddingBetween)
+            ])
+            
+            NSLayoutConstraint.activate([
+                snatchButton.topAnchor.constraint(equalTo: dimness.bottomAnchor, constant: 150),
                 snatchButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
                 snatchButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.7),
             ])

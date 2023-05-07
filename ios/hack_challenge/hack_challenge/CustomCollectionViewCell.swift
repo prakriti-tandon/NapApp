@@ -4,7 +4,6 @@
 //
 //  Created by Angela YUAN on 2023/4/29.
 //
-
 import UIKit
 
 class CustomCollectionViewCell: UICollectionViewCell {
@@ -64,7 +63,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
     func update(location: Location) {
         imageView.image = UIImage(named: "image1")
         labelView.text = location.building
-        if (!location.occupied) {
+        if (location.occupied) {
             availabilityLabel.text = "Reserved"
             availabilityLabel.textColor = .white
             availabilityLabel.backgroundColor = .red

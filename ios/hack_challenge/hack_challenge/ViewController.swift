@@ -42,6 +42,10 @@ class ViewController: UIViewController {
     var allSections : [String] = []
     var allLocations : [[Location]] = []
     
+    var central : [Location] = []
+    var west : [Location] = []
+    var north : [Location] = []
+    
     
     //paddings
     let itemPadding: CGFloat = 10
@@ -133,7 +137,7 @@ class ViewController: UIViewController {
         
         setupConstraints()
         createDummyData()
-//        print(allLocations)
+        print(allLocations)
     }
     
     
@@ -206,9 +210,10 @@ class ViewController: UIViewController {
         self.allLocations = [[],[],[]]
         NetworkManager.shared.getLocationSpecific(region: "central") { locations in
             DispatchQueue.main.async {
-//                print(locations)
+                print(locations)
                 self.locations[0] = locations
                 self.allLocations[0] = locations
+                self.central = locations
                 self.collectionView.reloadData()
             }
         }
@@ -217,6 +222,7 @@ class ViewController: UIViewController {
             DispatchQueue.main.async {
                 self.locations[2] = locations
                 self.allLocations[2] = locations
+                self.north = locations
                 self.collectionView.reloadData()
             }
         }
@@ -225,6 +231,7 @@ class ViewController: UIViewController {
             DispatchQueue.main.async {
                 self.locations[1] = locations
                 self.allLocations[1] = locations
+                self.west = locations
                 self.collectionView.reloadData()
             }
         }
@@ -239,14 +246,53 @@ class ViewController: UIViewController {
     }
     
     @objc func refreshData() {
-        //TODO: Refresh Data
-        NetworkManager.shared.getAllLocations { locations in
+        self.allLocations = [[],[],[]]
+        self.locations = []
+            
+        NetworkManager.shared.getLocationSpecific(region: "central") { locations in
             DispatchQueue.main.async {
-                self.allLocations = [locations]
+                self.allLocations[0] = locations
+                self.central = locations
+                self.reorganizeData()
                 self.collectionView.reloadData()
-                self.refreshControl.endRefreshing()
             }
         }
+        
+        NetworkManager.shared.getLocationSpecific(region: "north") { locations in
+            DispatchQueue.main.async {
+                self.allLocations[2] = locations
+                self.north = locations
+                self.reorganizeData()
+                self.collectionView.reloadData()
+            }
+        }
+        
+        NetworkManager.shared.getLocationSpecific(region: "west") { locations in
+            DispatchQueue.main.async {
+                self.allLocations[1] = locations
+                self.west = locations
+                self.reorganizeData()
+                self.collectionView.reloadData()
+            }
+        }
+        self.collectionView.reloadData()
+        self.refreshControl.endRefreshing()
+        }
+    
+    @objc func reorganizeData() {
+        self.locations = []
+        if (self.booleans[0] || self.booleans == [false, false, false]) {
+            self.locations = self.locations + [central]
+        }
+        
+        if (self.booleans[2] || self.booleans == [false, false, false]) {
+            self.locations = self.locations + [north]
+        }
+        
+        if (self.booleans[1] || self.booleans == [true, true, true] || self.booleans == [false, false, false]) {
+            self.locations = self.locations + [west]
+        }
+        
     }
 
 }
@@ -357,8 +403,21 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
 
 extension ViewController: updateCell{
     func updateAvailability(index: Int, section: Int, availability: Bool) {
-        locations[section][index].occupied = availability
-        collectionView.reloadData()
+//        locations[section][index].occupied = availability
+        if availability {
+            NetworkManager.shared.updateOccupacy(id: locations[section][index].id, user_id: 0) {_ in
+                DispatchQueue.main.async {
+                    self.refreshData()
+                }
+            }
+        }
+        else {
+            NetworkManager.shared.updateOccupacy(id: locations[section][index].id, user_id: 1) {_ in
+                DispatchQueue.main.async {
+                    self.refreshData()
+                }
+            }
+        }
     }
     
     

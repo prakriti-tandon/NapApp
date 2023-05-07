@@ -54,39 +54,36 @@ class NetworkManager {
         }
         task.resume()
     }
-
-//    func createMessage(body: String, sender: String, to:String?="", completion: @escaping (Message) -> Void) {
-//        var request = URLRequest(url: url)
-//        request.httpMethod = "POST"
-//        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-//        request.setValue("jdv72", forHTTPHeaderField: "netid")
-//        var toSomeone = to
-//        if (to == "") {
-//            toSomeone = sender
-//        }
+    
+    func updateOccupacy(id: Int, user_id: Int, completion: @escaping (Location) -> Void) {
+        var newURLString = "http://35.199.32.240:8000/api/locations/" + String(id) + "/" + String(user_id)
+        print(newURLString)
+        var newURL = URL(string: newURLString)!
+        var request = URLRequest(url: newURL)
+        request.httpMethod = "POST"
+//
 //        let body: [String: Any] = [
-//            "message": body,
-//            "toNetId": toSomeone ?? sender,
-//            "sender": sender
+//            "id": id,
+//            "occupier_id": user_id
 //        ]
-//
+        
 //        request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: .fragmentsAllowed)
-//
-//        let task = URLSession.shared.dataTask(with: request) { data, response, err in
-//            if let data = data {
-//                do {
-//                    let decoder = JSONDecoder()
-//                    let response = try decoder.decode(Message.self, from: data)
-//                    completion(response)
-//                }
-//                catch (let error) {
-//                    print(error.localizedDescription)
-//                }
-//            }
-//        }
-//        task.resume()
-//
-//    }
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, err in
+            if let data = data {
+                do {
+                    let decoder = JSONDecoder()
+                    let response = try decoder.decode(Location.self, from: data)
+                    completion(response)
+                }
+                catch (let error) {
+                    print(error.localizedDescription)
+                }
+            }
+        }
+        task.resume()
+    }
+    
 //
 //    func changeMessage(id: Int, body: String, sender: String, completion: @escaping (Message) -> Void) {
 //        var request = URLRequest(url: url)
@@ -119,6 +116,38 @@ class NetworkManager {
 //
 //    }
 //
+    //    func createMessage(body: String, sender: String, to:String?="", completion: @escaping (Message) -> Void) {
+    //        var request = URLRequest(url: url)
+    //        request.httpMethod = "POST"
+    //        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    //        request.setValue("jdv72", forHTTPHeaderField: "netid")
+    //        var toSomeone = to
+    //        if (to == "") {
+    //            toSomeone = sender
+    //        }
+    //        let body: [String: Any] = [
+    //            "message": body,
+    //            "toNetId": toSomeone ?? sender,
+    //            "sender": sender
+    //        ]
+    //
+    //        request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: .fragmentsAllowed)
+    //
+    //        let task = URLSession.shared.dataTask(with: request) { data, response, err in
+    //            if let data = data {
+    //                do {
+    //                    let decoder = JSONDecoder()
+    //                    let response = try decoder.decode(Message.self, from: data)
+    //                    completion(response)
+    //                }
+    //                catch (let error) {
+    //                    print(error.localizedDescription)
+    //                }
+    //            }
+    //        }
+    //        task.resume()
+    //
+    //    }
 //    func deleteMessage(id: Int, completion: @escaping (Message) -> Void) {
 //        var request = URLRequest(url: url)
 //        request.httpMethod = "DELETE"

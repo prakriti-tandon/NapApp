@@ -4,7 +4,6 @@
 //
 //  Created by Angela YUAN on 2023/4/29.
 //
-
 import UIKit
 
 class DetailViewController: UIViewController {
@@ -48,7 +47,7 @@ class DetailViewController: UIViewController {
         nameTextField.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(nameTextField)
         
-        if location.occupied {
+        if !location.occupied {
             snatchButton.setTitle("Snatch location", for: .normal)
             snatchButton.setTitleColor(.black, for: .normal)
             snatchButton.backgroundColor = .green
